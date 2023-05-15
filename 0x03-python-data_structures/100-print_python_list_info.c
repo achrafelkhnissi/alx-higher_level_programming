@@ -1,4 +1,5 @@
 #include <Python.h>
+#include <stdio.h>
 
 /**
  * print_python_list_info - prints some basic info about Python lists
@@ -17,7 +18,7 @@ void print_python_list_info(PyObject *p)
 	{
 		PyObject *element = elements[i];
 
-		rintf("Element %zd: %s\n", i, Py_TYPE(element)->tp_name);
+		printf("Element %zd: %s\n", i, Py_TYPE(element)->tp_name);
 	}
 
 	Py_DECREF(elements);

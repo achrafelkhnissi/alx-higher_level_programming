@@ -7,7 +7,7 @@ def simple_delete(a_dictionary, key=""):
 
 
 if __name__ == '__main__':
-    a_dictionary = { 'language': "C", 'Number': 89, 'track': "Low level" }
+    a_dictionary = {'language': "C", 'Number': 89, 'track': "Low level"}
     new_dict = simple_delete(a_dictionary, 'track')
     print(sorted(list(new_dict.items())))
     print("--")

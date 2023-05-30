@@ -16,22 +16,17 @@ class Square:
         Init method is a constructor for Square class
         Args:
             size: size of the square
-        Raises:
-            TypeError: if size is not an integer
-            ValueError: if size is less than 0
         """
-        if isinstance(size, int) is False:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
         self.__size = size
 
+    @property
     def size(self):
         """
         Public instance method that returns the current square size
         """
         return self.__size
 
+    @size.setter
     def size(self, value):
         """
         Public instance method that returns the current square size

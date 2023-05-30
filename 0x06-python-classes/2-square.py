@@ -15,11 +15,12 @@ class Square:
         Init method is a constructor for Square class
         Args:
             size: size of the square
+        Raises:
+            TypeError: if size is not an integer
+            ValueError: if size is less than 0
         """
-        self.__size = size
-        if not isinstance(size, int):
+        if isinstance(size, int) is False:
             raise TypeError("size must be an integer")
         if size < 0:
             raise ValueError("size must be >=0")
-        else:
-            self.__size = size
+        self.__size = size

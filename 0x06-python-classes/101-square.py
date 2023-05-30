@@ -90,14 +90,18 @@ class Square:
                 print(" " * self.__position[0] + "#" * self.__size)
 
     def __str__(self):
-        """
-        Returns a string representation of the square
+        """Returns a string representation of the square,
+        offset by position using the symbol '#'
+
+        Returns:
+            str: The square.
         """
         if self.__size == 0:
-            return ""
-        else:
-            for _ in range(self.__position[1]):
-                print()
-            for _ in range(self.__size):
-                print(" " * self.__position[0] + "#" * self.__size)
-            return ""
+            return ''
+
+        offset_lines = '\n' * self.position[1]
+        offset_spaces = ' ' * self.position[0]
+        line = offset_spaces + '#' * self.size
+        square = '\n'.join(line for _ in range(self.size))
+
+        return offset_lines + square

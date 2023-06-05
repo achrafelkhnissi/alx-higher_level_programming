@@ -1,4 +1,6 @@
-olve the N queens problem """
+#!/usr/bin/python3
+
+""" Solve the N queens problem """
 
 import sys
 
@@ -71,12 +73,12 @@ def solve_nqueens(board, col, solutions):
 
 def print_solutions(solutions):
     """
-    Print all solutions sorted lexicographically
+    Print all solutions
 
     Args:
         solutions (list): List of solutions to be printed
     """
-    for solution in sorted(solutions):
+    for solution in solutions:
         print(solution)
 
 

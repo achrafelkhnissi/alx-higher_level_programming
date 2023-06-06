@@ -12,12 +12,16 @@ class LockedClass:
         first_name (str): first name of something.
     """
 
+    # The __slots__ attribute restricts the instance attributes
+    # to only those listed. In this case, it allows only 'first_name'
+    # to be set as an instance attribute.
     __slots__ = ["first_name"]
 
-    def __init__(self)
+    def __init__(self, first_name=""):
         """Initializes the instance.
 
         Args:
-            first_name (str): The value for the 'first_name' attribute (default: "").
+            first_name (str): The value for the 'first_name'
+                attribute (default: "").
         """
-        self.first_name = "first_name"
+        self.first_name = first_name

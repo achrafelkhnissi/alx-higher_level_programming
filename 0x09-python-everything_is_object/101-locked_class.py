@@ -12,7 +12,7 @@ class LockedClass:
     # In this case, it allows only 'first_name' to be set as an instance attribute.
     __slots__ = ["first_name"]
 
-    def __init__(self, first_name=""):
+    def __init__(self, first_name="first_name")
         """Initializes the instance.
 
         Args:

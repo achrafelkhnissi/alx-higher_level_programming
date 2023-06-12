@@ -6,50 +6,50 @@ _________________________________________________________
 
 
 Importing `MyList` class from `1-my_list` module
-    >> MyList = __import__('1-my_list').MyList
-    >> my_list = MyList()
-    >> isinstance(my_list, list)
+    >>> MyList = __import__('1-my_list').MyList
+    >>> my_list = MyList()
+    >>> isinstance(my_list, list)
     True
-    >> my_list.print_sorted()
+    >>> my_list.print_sorted()
     []
 
 Adding items to the list
-    >> my_list.append(1)
-    >> my_list.append(4)
-    >> my_list.append(2)
-    >> my_list.append(3)
-    >> my_list.append(5)
-    >> my_list.print_sorted()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(5)
+    >>> my_list.print_sorted()
     [1, 2, 3, 4, 5]
 
 Using negative numbers
-    >> my_list.append(-1)
-    >> my_list.append(-4)
-    >> my_list.append(-2)
-    >> my_list.append(-3)
-    >> my_list.append(-5)
-    >> my_list.print_sorted()
+    >>> my_list.append(-1)
+    >>> my_list.append(-4)
+    >>> my_list.append(-2)
+    >>> my_list.append(-3)
+    >>> my_list.append(-5)
+    >>> my_list.print_sorted()
     [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]
 
 Using 0 as a number
-    >> my_list.append(0)
-    >> my_list.print_sorted()
+    >>> my_list.append(0)
+    >>> my_list.print_sorted()
     [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
 
 Using MAX integer
-    >> import sys
-    >> my_list.append(9223372036854775807)
-    >> my_list.print_sorted()
+    >>> import sys
+    >>> my_list.append(9223372036854775807)
+    >>> my_list.print_sorted()
     [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
 
 Using MIN integer
-    >> my_list.append(-9223372036854775808)
-    >> my_list.print_sorted()
+    >>> my_list.append(-9223372036854775808)
+    >>> my_list.print_sorted()
     [-9223372036854775808, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
 
 
 Using floats
-    >> my_list.append(3.14)
-    >> my_list.append(-3.14)
-    >> my_list.print_sorted()
+    >>> my_list.append(3.14)
+    >>> my_list.append(-3.14)
+    >>> my_list.print_sorted()
     [-9223372036854775808, -5, -4, -3.14, -3, -2, -1, 0, 1, 2, 3, 3.14, 4, 5, 9223372036854775807]

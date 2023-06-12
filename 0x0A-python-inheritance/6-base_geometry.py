@@ -18,6 +18,7 @@ class BaseGeometry:
     - area(): Raises an exception and should be implemented in derived classes.
     """
 
+    @classmethod
     def area(self):
         """
         Calculates the area of the geometric shape.

@@ -28,7 +28,6 @@ class BaseGeometry:
         the corresponding geometric shape.
 
         Raises:
-        - NotImplementedError: If the method is not implemented in
-        the derived class.
+        Exception: Always raises an exception when called.
         """
-        raise NotImplementedError("area() is not implemented")
+        raise Exception("area() is not implemented")

@@ -1,66 +1,44 @@
-# The `1-my-list` Module
-=========================
+======================
+The ``1-my_list`` module
+======================
 
-Using `print_sorted()` function from the `1-my_list` module.
-_________________________________________________________
+Using ``print_sorted``
+-------------------
 
+This is a text file to test the 1-my_list module.  First import
+``print_sorted`` from the ``1-my_list`` module:
 
-Importing `MyList` class from `1-my_list` module
-    >>> MyList = __import__('1-my_list').MyList
-    >>> my_list = MyList()
-    >>> isinstance(my_list, list)
-    True
-    >>> my_list.print_sorted()
-    []
+>>> MyList = __import__('1-my_list').MyList
 
-Adding items to the list
-    >>> my_list.append(1)
-    >>> my_list.append(4)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> my_list.append(5)
-    >>> my_list.print_sorted()
-    [1, 2, 3, 4, 5]
+Now use it:
 
-Using negative numbers
-    >>> my_list.append(-1)
-    >>> my_list.append(-4)
-    >>> my_list.append(-2)
-    >>> my_list.append(-3)
-    >>> my_list.append(-5)
-    >>> my_list.print_sorted()
-    [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]
+>>> my_list = MyList([1, 4, 2, 3, 5])
 
-Using 0 as a number
-    >>> my_list.append(0)
-    >>> my_list.print_sorted()
-    [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
 
-Using MAX integer
-    >>> import sys
-    >>> my_list.append(9223372036854775807)
-    >>> my_list.print_sorted()
-    [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
 
-Using MIN integer
-    >>> my_list.append(-9223372036854775808)
-    >>> my_list.print_sorted()
-    [-9223372036854775808, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
+>>> my_list.append(-100)
 
+>>> my_list.print_sorted()
+[-100, 1, 2, 3, 4, 5]
 
-Using floats
-    >>> my_list.append(3.14)
-    >>> my_list.append(-3.14)
-    >>> my_list.print_sorted()
-    [-9223372036854775808, -5, -4, -3.14, -3, -2, -1, 0, 1, 2, 3, 3.14, 4, 5, 9223372036854775807]
+>>> print(my_list)
+[1, 4, 2, 3, 5, -100]
 
-Using None value
-    >>> my_list.append(None)
-    >>> my_list.print_sorted()
-    Traceback (most recent call last):
-    TypeError: unorderable types: NoneType() < int()
+>>> copy = my_list.print_sorted()
+[-100, 1, 2, 3, 4, 5]
 
-Using NULL value
-    >>> my_list.append(NULL)
-    Traceback (most recent call last):
-    NameError: name 'NULL' is not defined
+>>> copy is my_list.print_sorted()
+[-100, 1, 2, 3, 4, 5]
+True
+
+>>> my_list = MyList()
+
+>>> my_list.print_sorted()
+[]
+
+>>> print(my_list)
+[]

@@ -19,7 +19,6 @@ class BaseGeometry:
     - integer_validator(): Validates the value passed to the method.
     """
 
-    @classmethod
     def area(self):
         """
         Calculates the area of the geometric shape.
@@ -33,7 +32,6 @@ class BaseGeometry:
         """
         raise Exception("area() is not implemented")
 
-    @classmethod
     def integer_validator(self, name, value):
         """
         Validates the value passed to the method.

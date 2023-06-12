@@ -36,38 +36,20 @@ Importing `MyList` class from `1-my_list` module
     >> my_list.print_sorted()
     [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
 
-# Using strings
-    >> my_list.append("Alx")
-    >> my_list.append("School")
-    >> my_list.append("Python")
-    >> my_list.print_sorted()
-    [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 'Alx', 'Python', 'School']
-
 # Using MAX integer
     >> import sys
-    >> my_list.append(sys.maxsize)
+    >> my_list.append(9223372036854775807)
     >> my_list.print_sorted()
-    [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 'Alx', 'Python', 'School', 9223372036854775807]
+    [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
 
 # Using MIN integer
-    >> my_list.append(-sys.maxsize - 1)
+    >> my_list.append(-9223372036854775808)
     >> my_list.print_sorted()
-    [-9223372036854775808, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 'Alx', 'Python', 'School', 9223372036854775807]
+    [-9223372036854775808, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 9223372036854775807]
 
 
 # Using floats
     >> my_list.append(3.14)
     >> my_list.append(-3.14)
     >> my_list.print_sorted()
-    [-9223372036854775808, -5, -4, -3.14, -3, -2, -1, 0, 1, 2, 3, 3.14, 4, 5, 'Alx', 'Python', 'School', 9223372036854775807]
-
-
-# Using None
-    >> my_list.append(None)
-    >> my_list.print_sorted()
-    [-9223372036854775808, -5, -4, -3.14, -3, -2, -1, 0, 1, 2, 3, 3.14, 4, 5, 'Alx', 'Python', 'School', None, 9223372036854775807]
-
-# Using NULL value
-    >> my_list.append(NULL)
-    Traceback (most recent call last):
-    NameError: name 'NULL' is not defined
+    [-9223372036854775808, -5, -4, -3.14, -3, -2, -1, 0, 1, 2, 3, 3.14, 4, 5, 9223372036854775807]

@@ -34,11 +34,11 @@ if __name__ == "__main__":
             split_line = line.split()
             try:
                 file_size += int(split_line[-1])
-            except ValueError:
+            except [ValueError, IndexError]:
                 pass
             try:
                 status_codes[split_line[-2]] += 1
-            except KeyError:
+            except [KeyError, IndexError]:
                 pass
             if count % 10 == 0:
                 print_stats(status_codes, file_size)

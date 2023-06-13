@@ -17,11 +17,12 @@ def add_item(args):
         args {list} -- [list of arguments]
     """
     try:
-        with open("add_item.json", mode="r", encoding="utf-8") as f:
-            my_list = json.load(f)
+        load_from_json_file = __import__('6-load_from_json_file')\
+            .load_from_json_file
+        my_list = load_from_json_file("add_item.json")
     except FileNotFoundError:
         my_list = []
     for arg in args:
         my_list.append(arg)
-    with open("add_item.json", mode="w", encoding="utf-8") as f:
-        json.dump(my_list, f)
+    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+    save_to_json_file(my_list, "add_item.json")

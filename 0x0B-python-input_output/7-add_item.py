@@ -6,9 +6,6 @@ Module for add_item method.
 """
 
 
-import json
-
-
 def add_item(args):
     """
     adds all arguments to a Python list, and then save them to a file
@@ -25,6 +22,6 @@ def add_item(args):
         my_list = load_from_json_file("add_item.json")
     except FileNotFoundError:
         my_list = []
-    for arg in args:
-        my_list.append(arg)
+    for i in range(1, len(args)):
+        my_list.append(args[i])
     save_to_json_file(my_list, "add_item.json")

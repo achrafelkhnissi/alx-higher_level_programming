@@ -97,3 +97,29 @@ class Base:
             return [cls.create(**dictionary) for dictionary in list_dicts]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        write CSV string representation of list_objs to a file
+        args:
+            list_objs (list): list of instances that inherit from Base
+        """
+
+        filename = cls.__name__ + ".csv"
+
+        if list_objs is not None:
+            list_objs = [obj.to_dictionary() for obj in list_objs]
+        else:
+            list_objs = []
+
+        with open(filename, "w") as file:
+            if list_objs is not None:
+                fieldnames = []
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                elif cls.__name__ == "Square":
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+                writer.writerows(list_objs)

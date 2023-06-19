@@ -2,7 +2,6 @@
 
 """Unittest for base.py"""
 
-
 import unittest
 import json
 from models.base import Base
@@ -170,6 +169,34 @@ class TestBase(unittest.TestCase):
         list_squares_output = Square.load_from_file()
         self.assertTrue([s1.__str__(), s2.__str__()] ==
                         [s.__str__() for s in list_squares_output])
+
+    def test_load_from_file_with_more_args(self):
+        """Test load_from_file with more args"""
+        with self.assertRaises(TypeError):
+            Base.load_from_file([{"id": 12}, {"id": 13}], 1)
+
+    def test_load_from_file_with_no_args(self):
+        """Test load_from_file with no args"""
+        Base.load_from_file()
+        with open("Base.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
+    def test_save_to_file_csv_with_none(self):
+        """Test save_to_file_csv with None"""
+        Base.save_to_file_csv(None)
+        with open("Base.csv", "r") as f:
+            self.assertEqual(f.read(), "\n")
+
+    def test_save_to_file_csv_with_empty_list(self):
+        """Test save_to_file_csv with empty list"""
+        Base.save_to_file_csv([])
+        with open("Base.csv", "r") as f:
+            self.assertEqual(f.read(), "\n")
+
+    def test_save_to_file_csv_with_more_args(self):
+        """Test save_to_file_csv with more args"""
+        with self.assertRaises(TypeError):
+            Base.save_to_file_csv([{"id": 12}, {"id": 13}], 1)
 
 
 if "__main__" == __name__:

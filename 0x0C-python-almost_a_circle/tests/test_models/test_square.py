@@ -166,6 +166,52 @@ class TestSquare(unittest.TestCase):
         s28.update(89, 2, 3, 4)
         self.assertEqual(s28.y, 4)
 
+    def test_update_args(self):
+        """Test update with *args"""
+        s29 = Square(10, 10, 10, 10)
+        s29.update(89, 2, 3, 4)
+        self.assertEqual(s29.id, 89)
+        self.assertEqual(s29.size, 2)
+        self.assertEqual(s29.x, 3)
+        self.assertEqual(s29.y, 4)
+
+    def test_update_kwargs(self):
+        """Test update with **kwargs"""
+        s30 = Square(10, 10, 10, 10)
+        s30.update(size=1)
+        self.assertEqual(s30.size, 1)
+        s30.update(size=1, x=2)
+        self.assertEqual(s30.size, 1)
+        self.assertEqual(s30.x, 2)
+        s30.update(y=1, size=2, x=3, id=89)
+        self.assertEqual(s30.id, 89)
+        self.assertEqual(s30.size, 2)
+        self.assertEqual(s30.x, 3)
+        self.assertEqual(s30.y, 1)
+
+    def test_update_errors(self):
+        """Test update errors"""
+        s31 = Square(10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            s31.update(89, "hello")
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            s31.update(89, 0)
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            s31.update(89, 10, "hello")
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            s31.update(89, 10, -1)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            s31.update(89, 10, 10, "hello")
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            s31.update(89, 10, 10, -1)
+
+    def test_to_dictionary(self):
+        """Test to_dictionary"""
+        s32 = Square(10, 2, 1, 1)
+        a_dict = {'id': 1, 'x': 2, 'size': 10, 'y': 1}
+        s32_dictionary = s32.to_dictionary()
+        self.assertTrue(s32_dictionary == a_dict)
+
 
 if __name__ == "__main__":
     unittest.main()

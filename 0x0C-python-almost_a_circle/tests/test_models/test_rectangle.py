@@ -168,6 +168,14 @@ class TestRectangle(unittest.TestCase):
         r30.update(89, 2, 3, 4, 5)
         self.assertEqual(str(r30), "[Rectangle] (89) 4/5 - 2/3")
 
+    def test_to_dictionary(self):
+        """checks dictionary conversion"""
+        Base._Base__nb_objects = 0
+        r31 = Rectangle(10, 2, 1, 9)
+        r31dict = r31.to_dictionary()
+        comp_dict = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertTrue(r31dict == comp_dict)
+
 
 if __name__ == "__main__":
     unittest.main()

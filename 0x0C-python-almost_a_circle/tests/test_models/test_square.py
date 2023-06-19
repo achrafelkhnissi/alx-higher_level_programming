@@ -154,6 +154,18 @@ class TestSquare(unittest.TestCase):
         output3 = capture_output(square3.display)
         self.assertEqual(output3, "\n\n\n ###\n ###\n ###\n")
 
+    def test_update(self):
+        """Test update"""
+        s28 = Square(10, 10, 10, 10)
+        s28.update(89)
+        self.assertEqual(s28.id, 89)
+        s28.update(89, 2)
+        self.assertEqual(s28.size, 2)
+        s28.update(89, 2, 3)
+        self.assertEqual(s28.x, 3)
+        s28.update(89, 2, 3, 4)
+        self.assertEqual(s28.y, 4)
+
 
 if __name__ == "__main__":
     unittest.main()

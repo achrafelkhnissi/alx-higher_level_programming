@@ -139,3 +139,39 @@ class Base:
             return [cls.create(**dictionary) for dictionary in list_dicts]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        draw Rectangles and Squares using turtle
+        """
+        import turtle
+        import random
+
+        turtle.title("Rectangles and Squares")
+        turtle.bgcolor("black")
+        turtle.speed(0)
+        turtle.hideturtle()
+
+        colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+        for rectangle in list_rectangles:
+            turtle.color(random.choice(colors))
+            turtle.penup()
+            turtle.goto(rectangle.x, rectangle.y)
+            turtle.pendown()
+            for i in range(2):
+                turtle.forward(rectangle.width)
+                turtle.left(90)
+                turtle.forward(rectangle.height)
+                turtle.left(90)
+
+        for square in list_squares:
+            turtle.color(random.choice(colors))
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for i in range(4):
+                turtle.forward(square.size)
+                turtle.left(90)
+
+        turtle.exitonclick()

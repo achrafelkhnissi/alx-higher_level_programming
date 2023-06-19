@@ -29,3 +29,7 @@ class TestBase(unittest.TestCase):
         """Test __init__ with float"""
         b4 = Base(3.14)
         self.assertEqual(b4.id, 3.14)
+
+
+if "__main__" == __name__:
+    unittest.main()

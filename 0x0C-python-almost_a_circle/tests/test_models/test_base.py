@@ -57,6 +57,40 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.to_json_string()
 
+    def test_save_to_file_with_none(self):
+        """Test save_to_file with None"""
+        Base.save_to_file(None)
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_with_empty_list(self):
+        """Test save_to_file with empty list"""
+        Base.save_to_file([])
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_with_one_dictionary(self):
+        """Test save_to_file with one dictionary"""
+        Base.save_to_file([{"id": 12}])
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 12}]')
+
+    def test_save_to_file_with_two_dictionaries(self):
+        """Test save_to_file with two dictionaries"""
+        Base.save_to_file([{"id": 12}, {"id": 13}])
+        with open("Base.json", "r") as f:
+            self.assertEqual(f.read(), '[{"id": 12}, {"id": 13}]')
+
+    def test_save_to_file_with_more_args(self):
+        """Test save_to_file with more args"""
+        with self.assertRaises(TypeError):
+            Base.save_to_file([{"id": 12}, {"id": 13}], 1)
+
+    def test_save_to_file_with_no_args(self):
+        """Test save_to_file with no args"""
+        with self.assertRaises(TypeError):
+            Base.save_to_file()
+
 
 if "__main__" == __name__:
     unittest.main()

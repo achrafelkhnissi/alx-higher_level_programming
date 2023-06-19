@@ -95,5 +95,5 @@ class Base:
             with open(filename, "r") as file:
                 list_dicts = cls.from_json_string(file.read())
             return [cls.create(**dictionary) for dictionary in list_dicts]
-        except:
+        except FileNotFoundError:
             return []

@@ -30,6 +30,33 @@ class TestBase(unittest.TestCase):
         b4 = Base(3.14)
         self.assertEqual(b4.id, 3.14)
 
+    def test_to_json_string_with_none(self):
+        """Test to_json_string with None"""
+        self.assertEqual(Base.to_json_string(None), "[]")
+
+    def test_to_json_string_with_empty_list(self):
+        """Test to_json_string with empty list"""
+        self.assertEqual(Base.to_json_string([]), "[]")
+
+    def test_to_json_string_with_one_dictionary(self):
+        """Test to_json_string with one dictionary"""
+        self.assertEqual(Base.to_json_string([{"id": 12}]), '[{"id": 12}]')
+
+    def test_to_json_string_with_two_dictionaries(self):
+        """Test to_json_string with two dictionaries"""
+        self.assertEqual(Base.to_json_string([{"id": 12}, {"id": 13}]),
+                         '[{"id": 12}, {"id": 13}]')
+
+    def test_to_json_string_with_more_args(self):
+        """Test to_json_string with more args"""
+        with self.assertRaises(TypeError):
+            Base.to_json_string([{"id": 12}, {"id": 13}], 1)
+
+    def test_to_json_string_with_no_args(self):
+        """Test to_json_string with no args"""
+        with self.assertRaises(TypeError):
+            Base.to_json_string()
+
 
 if "__main__" == __name__:
     unittest.main()

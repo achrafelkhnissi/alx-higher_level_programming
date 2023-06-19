@@ -15,16 +15,19 @@ class TestBase(unittest.TestCase):
 
     def test_init_with_id(self):
         """Test __init__ with id"""
+        Base._Base__nb_objects = 0
         b1 = Base(id=12)
         self.assertEqual(b1.id, 12)
 
     def test_init_without_id(self):
         """Test __init__ without id"""
+        Base._Base__nb_objects = 0
         b2 = Base()
         self.assertEqual(b2.id, 1)
 
     def test_init_with_string(self):
         """Test __init__ with string"""
+        Base._Base__nb_objects = 0
         b3 = Base("hello")
         self.assertEqual(b3.id, "hello")
 
@@ -129,6 +132,22 @@ class TestBase(unittest.TestCase):
         """Test from_json_string with no args"""
         with self.assertRaises(TypeError):
             Base.from_json_string()
+
+    def test_create_with_rectangle(self):
+        """Test create with rectangle"""
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(r1.__str__(), r2.__str__())
+        self.assertFalse(r1 is r2)
+
+    def test_create_with_square(self):
+        """Test create with square"""
+        r1 = Square(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Square.create(**r1_dictionary)
+        self.assertEqual(r1.__str__(), r2.__str__())
+        self.assertFalse(r1 is r2)
 
 
 if "__main__" == __name__:

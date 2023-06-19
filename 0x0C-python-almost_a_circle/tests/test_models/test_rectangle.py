@@ -31,6 +31,26 @@ class TestRectangle(unittest.TestCase):
         r4 = Rectangle(10, 2, 0, 0, 3.14)
         self.assertEqual(r4.id, 3.14)
 
+    def test_init_with_zero_width(self):
+        """Test __init__ with zero width"""
+        with self.assertRaises(ValueError):
+            r5 = Rectangle(0, 2)
+
+    def test_init_with_negative_width(self):
+        """Test __init__ with negative width"""
+        with self.assertRaises(ValueError):
+            r6 = Rectangle(-10, 2)
+
+    def test_init_with_zero_height(self):
+        """Test __init__ with zero height"""
+        with self.assertRaises(ValueError):
+            r7 = Rectangle(10, 0)
+
+    def test_init_with_negative_height(self):
+        """Test __init__ with negative height"""
+        with self.assertRaises(ValueError):
+            r8 = Rectangle(10, -2)
+
 
 if __name__ == "__main__":
     unittest.main()

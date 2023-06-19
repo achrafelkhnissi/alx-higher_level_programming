@@ -4,6 +4,8 @@
 
 
 import unittest
+import sys
+import io
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -124,6 +126,28 @@ class TestRectangle(unittest.TestCase):
         """Test area"""
         r25 = Rectangle(3, 2)
         self.assertEqual(r25.area(), 6)
+
+    def test_area_with_args(self):
+        """Test area with args"""
+        with self.assertRaises(TypeError):
+            r26 = Rectangle(3, 2)
+            r26.area(1)
+
+    def test_display(self):
+        """Test display"""
+        r27 = Rectangle(2, 2)
+        previous_stdout = sys.stdout
+        result = io.StringIO()
+        sys.stdout = result
+        r27.display()
+        sys.stdout = previous_stdout
+        self.assertEqual(result.getvalue(), "##\n##\n")
+
+    def test_display_with_args(self):
+        """Test display with args"""
+        with self.assertRaises(TypeError):
+            r28 = Rectangle(2, 2)
+            r28.display(1)
 
 
 if __name__ == "__main__":

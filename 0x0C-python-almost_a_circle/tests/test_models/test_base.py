@@ -198,6 +198,44 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.save_to_file_csv([{"id": 12}, {"id": 13}], 1)
 
+    def test_save_to_file_csv_with_no_args(self):
+        """Test save_to_file_csv with no args"""
+        with self.assertRaises(TypeError):
+            Base.save_to_file_csv()
+
+    def test_load_from_file_csv_with_more_args(self):
+        """Test load_from_file_csv with more args"""
+        with self.assertRaises(TypeError):
+            Base.load_from_file_csv([{"id": 12}, {"id": 13}], 1)
+
+    def test_load_from_file_csv_with_no_args(self):
+        """Test load_from_file_csv with no args"""
+        Base.load_from_file_csv()
+        with open("Base.csv", "r") as file:
+            self.assertEqual(file.read(), "\n")
+
+    def test_save_to_file_csv_with_rectangle(self):
+        """Test save_to_file_csv with rectangle"""
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file_csv(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file_csv()
+        self.assertTrue([r1.__str__(), r2.__str__()] ==
+                        [r.__str__() for r in list_rectangles_output])
+
+    def test_save_to_file_csv_with_square(self):
+        """Test save_to_file_csv with square"""
+        Base._Base__nb_objects = 0
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        list_squares_input = [s1, s2]
+        Square.save_to_file_csv(list_squares_input)
+        list_squares_output = Square.load_from_file_csv()
+        self.assertTrue([s1.__str__(), s2.__str__()] ==
+                        [s.__str__() for s in list_squares_output])
+
 
 if "__main__" == __name__:
     unittest.main()

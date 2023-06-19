@@ -123,3 +123,19 @@ class Base:
                 writer = csv.DictWriter(file, fieldnames=fieldnames)
                 writer.writeheader()
                 writer.writerows(list_objs)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        return a list of instances
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r") as file:
+                list_dicts = csv.DictReader(file)
+                list_dicts = [dict([key, int(value)]
+                                   for key, value in dictionary.items())
+                              for dictionary in list_dicts]
+            return [cls.create(**dictionary) for dictionary in list_dicts]
+        except FileNotFoundError:
+            return []
